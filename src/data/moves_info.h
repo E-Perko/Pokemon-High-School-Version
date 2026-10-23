@@ -22115,6 +22115,50 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         }),
         .battleAnimScript = gBattleAnimMove_MalignantChain,
     },
+    
+    [MOVE_BEAM_ATTACK] =
+    {
+        .name = COMPOUND_STRING("Beam Attack"),
+        .description = COMPOUND_STRING(
+            "A beam is shot out of the\n"
+            "user that may paralyze."),
+        .effect = EFFECT_HIT,
+        .power = 80,
+        .type = TYPE_NORMAL,
+        .accuracy = 100,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_PARALYSIS,
+            .chance = 20,
+        }),
+        .battleAnimScript = gBattleAnimMove_HyperBeam,
+    },
+    
+    [MOVE_ZEKROM_KICK] =
+    {
+        .name = COMPOUND_STRING("Zekrom Kick"),
+        .description = COMPOUND_STRING(
+            "A legendary kick with a high\n"
+            "crit ratio. May cause paralysis."),
+        .effect = EFFECT_HIT,
+        .power = 85,
+        .type = TYPE_ELECTRIC,
+        .accuracy = 90,
+        .criticalHitStage = B_UPDATED_MOVE_DATA >= GEN_3 ? 1 : 2,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .makesContact = TRUE,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_PARALYSIS,
+            .chance = 10,
+        }),
+        .battleAnimScript = gBattleAnimMove_MegaKick,
+    },
 
     // Z-Moves
     [MOVE_BREAKNECK_BLITZ] =

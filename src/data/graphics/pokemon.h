@@ -27500,6 +27500,25 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
 #endif //OW_POKEMON_OBJECT_EVENTS
 #endif //P_FAMILY_PECHARUNT
 
+#if P_FAMILY_WALTERGEIST
+    const u32 gMonFrontPic_Waltergeist[] = INCGFX_U32("graphics/pokemon/waltergeist/front.png", ".4bpp.smol");
+    const u16 gMonPalette_Waltergeist[] = INCGFX_U16("graphics/pokemon/waltergeist/normal.pal", ".gbapal");
+    const u32 gMonBackPic_Waltergeist[] = INCGFX_U32("graphics/pokemon/waltergeist/back.png", ".4bpp.smol");
+    const u16 gMonShinyPalette_Waltergeist[] = INCGFX_U16("graphics/pokemon/waltergeist/shiny.pal", ".gbapal");
+    const u8 gMonIcon_Waltergeist[] = INCGFX_U8("graphics/pokemon/waltergeist/icon.png", ".4bpp");
+#if P_FOOTPRINTS
+    const u8 gMonFootprint_Waltergeist[] = INCGFX_U8("graphics/pokemon/waltergeist/footprint.png", ".1bpp");
+#endif //P_FOOTPRINTS
+#if OW_POKEMON_OBJECT_EVENTS
+    const u32 gObjectEventPic_Waltergeist[] = INCGFX_COMP("graphics/pokemon/waltergeist/overworld.png", ".4bpp", "-mwidth 4 -mheight 4");
+#if OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
+    const u16 gOverworldPalette_Waltergeist[] = INCGFX_U16("graphics/pokemon/waltergeist/overworld_normal.pal", ".gbapal");
+    const u16 gShinyOverworldPalette_Waltergeist[] = INCGFX_U16("graphics/pokemon/waltergeist/overworld_shiny.pal", ".gbapal");
+#endif //OW_PKMN_OBJECTS_SHARE_PALETTES
+#endif //OW_POKEMON_OBJECT_EVENTS
+#endif //P_FAMILY_WALTERGEIST
+
     const u32 gMonFrontPic_Egg[] = INCGFX_U32("graphics/pokemon/egg/anim_front.png", ".4bpp.smol");
     const u16 gMonPalette_Egg[] = INCGFX_U16("graphics/pokemon/egg/normal.pal", ".gbapal");
     const u8 gMonIcon_Egg[] = INCGFX_U8("graphics/pokemon/egg/icon.png", ".4bpp");
+

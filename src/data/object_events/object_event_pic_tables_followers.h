@@ -6729,4 +6729,10 @@ static const struct SpriteFrameImage sPicTable_Pecharunt[] = {
 };
 #endif //P_FAMILY_PECHARUNT
 
+#if P_FAMILY_WALTERGEIST
+static const struct SpriteFrameImage sPicTable_Waltergeist[] = {
+    overworld_ascending_frames(gObjectEventPic_Waltergeist, 4, 4),
+};
+#endif //P_FAMILY_WALTERGEIST
+
 #endif //OW_POKEMON_OBJECT_EVENTS

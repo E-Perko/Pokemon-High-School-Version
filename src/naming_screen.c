@@ -80,6 +80,7 @@ enum {
     WIN_KB_PAGE_2, // Initially WIN_KB_PAGE_1 is in front, with WIN_KB_PAGE_2 on deck
     WIN_TEXT_ENTRY,
     WIN_TEXT_ENTRY_BOX,
+    WIN_CODE_ENTRY_BOX,
     WIN_BANNER,
     WIN_COUNT,
 };
@@ -269,6 +270,15 @@ static const struct WindowTemplate sWindowTemplates[WIN_COUNT + 1] =
         .paletteNum = 10,
         .baseBlock = 0x052
     },
+    [WIN_CODE_ENTRY_BOX] = {
+        .bg = 3,
+        .tilemapLeft = 3,
+        .tilemapTop = 2,
+        .width = 24,
+        .height = 5,
+        .paletteNum = 10,
+        .baseBlock = 0x052
+    },
     [WIN_BANNER] = {
         .bg = 0,
         .tilemapLeft = 0,
@@ -297,22 +307,22 @@ static const u8 sKeyboardChars[KBPAGE_COUNT][KBROW_COUNT][KBCOL_COUNT] = {
         __("TUVWXYZ "),
     },
     [KEYBOARD_SYMBOLS] = {
-        __("01234   "),
-        __("56789   "),
-        __("!?♂♀/-  "),
-        __("…“”‘'   "),
+        __("01234567"),
+        __("89ÀÁÂÇÈË"),
+        __("xyztÌÎeÏ"),
+        __("+-/.ÒÓ  "),
     }
 };
 
 static const u8 sPageColumnCounts[KBPAGE_COUNT] = {
     [KEYBOARD_LETTERS_LOWER] = KBCOL_COUNT,
     [KEYBOARD_LETTERS_UPPER] = KBCOL_COUNT,
-    [KEYBOARD_SYMBOLS]       = 6
+    [KEYBOARD_SYMBOLS]       = 8
 };
 static const u8 sPageColumnXPos[KBPAGE_COUNT][KBCOL_COUNT] = {
     [KEYBOARD_LETTERS_LOWER] = {0, 12, 24, 56, 68, 80, 92, 123},
     [KEYBOARD_LETTERS_UPPER] = {0, 12, 24, 56, 68, 80, 92, 123},
-    [KEYBOARD_SYMBOLS]       = {0, 22, 44, 66, 88, 110}
+    [KEYBOARD_SYMBOLS]       = {0, 16, 32, 48, 64, 80, 96, 112}
 };
 
 static const struct NamingScreenTemplate *const sNamingScreenTemplates[];
@@ -627,7 +637,11 @@ static u8 CurrentPageToKeyboardId(void)
 
 static bool8 MainState_FadeIn(void)
 {
-    DrawBgTilemap(3, gNamingScreenBackground_Tilemap);
+    if (sNamingScreen->templateNum == NAMING_SCREEN_CODE) {
+        DrawBgTilemap(3, gNamingScreenBackground_Code_Tilemap);
+    } else {
+        DrawBgTilemap(3, gNamingScreenBackground_Tilemap);
+    }
     sNamingScreen->currentPage = KBPAGE_LETTERS_UPPER;
     DrawBgTilemap(2, gNamingScreenKeyboardLower_Tilemap);
     DrawBgTilemap(1, gNamingScreenKeyboardUpper_Tilemap);
@@ -637,7 +651,9 @@ static bool8 MainState_FadeIn(void)
     NamingScreen_Dummy(1, KEYBOARD_LETTERS_UPPER);
     DrawTextEntry();
     DrawTextEntryBox();
-    PrintControls();
+    if (sNamingScreen->templateNum != NAMING_SCREEN_CODE) {
+        PrintControls();
+    }
     CopyBgTilemapBufferToVram(1);
     CopyBgTilemapBufferToVram(2);
     CopyBgTilemapBufferToVram(3);
@@ -1768,6 +1784,13 @@ static void HandleDpadMovement(struct Task *task)
 #undef tKeyboardEvent
 #undef tButtonId
 
+static void DrawCodeTextEntryBox(void)
+{
+    FillWindowPixelBuffer(sNamingScreen->windows[WIN_CODE_ENTRY_BOX], PIXEL_FILL(1));
+    AddTextPrinterParameterized(sNamingScreen->windows[WIN_CODE_ENTRY_BOX], FONT_NORMAL, sNamingScreen->template->title, 0, 1, 0, 0);
+    PutWindowTilemap(sNamingScreen->windows[WIN_CODE_ENTRY_BOX]);
+}
+
 static void DrawNormalTextEntryBox(void)
 {
     FillWindowPixelBuffer(sNamingScreen->windows[WIN_TEXT_ENTRY_BOX], PIXEL_FILL(1));
@@ -1794,7 +1817,7 @@ static void (*const sDrawTextEntryBoxFuncs[])(void) =
     [NAMING_SCREEN_CAUGHT_MON] = DrawMonTextEntryBox,
     [NAMING_SCREEN_NICKNAME]   = DrawMonTextEntryBox,
     [NAMING_SCREEN_WALDA]      = DrawNormalTextEntryBox,
-    [NAMING_SCREEN_CODE]       = DrawNormalTextEntryBox,
+    [NAMING_SCREEN_CODE]       = DrawCodeTextEntryBox,
     [NAMING_SCREEN_RIVAL]      = DrawNormalTextEntryBox
 };
 
@@ -2195,11 +2218,11 @@ static const struct NamingScreenTemplate sCodeScreenTemplate =
 {
     .copyExistingString = FALSE,
     .maxChars = CODE_NAME_LENGTH,
-    .iconFunction = 5,
+    .iconFunction = 0,
     .addGenderIcon = FALSE,
     .initialPage = KBPAGE_LETTERS_UPPER,
     .unused = 35,
-    .title = COMPOUND_STRING("Enter code:"),
+    .title = COMPOUND_STRING("Given x=tÀ and y=7-6t, find dy/dx.\nSample extended text for box"),
 };
 
 static const struct NamingScreenTemplate sRivalNamingScreenTemplate =

@@ -1246,7 +1246,7 @@ RustboroCity_Text_CitySign:
 	.string "nature and science.”$"
 
 RustboroCity_Text_TrainersSchoolSign:
-	.string "POKéMON TRAINER'S SCHOOL\p"
+	.string "BRAWL STARS HIGH SCHOOL\p"
 	.string "“We'll teach you anything about\n"
 	.string "POKéMON!”$"
 

@@ -2011,6 +2011,7 @@ const u32 gNamingScreenPageSwapButton_Gfx[]      = INCGFX_U32("graphics/naming_s
 const u32 gNamingScreenInputArrow_Gfx[]          = INCGFX_U32("graphics/naming_screen/input_arrow.png", ".4bpp");
 const u32 gNamingScreenUnderscore_Gfx[]          = INCGFX_U32("graphics/naming_screen/underscore.png", ".4bpp");
 const u32 gNamingScreenBackground_Tilemap[]      = INCGFX_U32("graphics/naming_screen/background.bin", ".smolTM");
+const u32 gNamingScreenBackground_Code_Tilemap[] = INCGFX_U32("graphics/naming_screen/background_code.bin", ".smolTM");
 const u32 gNamingScreenKeyboardUpper_Tilemap[]   = INCGFX_U32("graphics/naming_screen/keyboard_upper.bin", ".smolTM");
 const u32 gNamingScreenKeyboardLower_Tilemap[]   = INCGFX_U32("graphics/naming_screen/keyboard_lower.bin", ".smolTM");
 const u32 gNamingScreenKeyboardSymbols_Tilemap[] = INCGFX_U32("graphics/naming_screen/keyboard_symbols.bin", ".smolTM");
@@ -2107,7 +2108,7 @@ const u16 gMonIconPalettes[][16] =
 };
 
 const u16 gTitleScreenBgPalettes[]         = INCBIN_U16("graphics/title_screen/pokemon_logo.gbapal",
-                                                        "graphics/title_screen/rayquaza_and_clouds.gbapal");
+                                                        "graphics/title_screen/sbhs_tiles.gbapal");
 const u16 gTitleScreenEmeraldVersionPal[]  = INCGFX_U16("graphics/title_screen/emerald_version.png", ".gbapal");
 const u32 gTitleScreenCloudsTilemap[]      = INCGFX_U32("graphics/title_screen/clouds.bin", ".smolTM");
 const u32 gTitleScreenPokemonLogoGfx[]     = INCGFX_U32("graphics/title_screen/pokemon_logo.png", ".8bpp.smol");

@@ -246,6 +246,69 @@ const struct SpeciesInfo gSpeciesInfo[] =
         //.perfectIVCount = NUM_STATS,
     },
     */
+    
+    [SPECIES_WALTERGEIST] =
+    {
+        .baseHP        = 87,
+        .baseAttack    = 60,
+        .baseDefense   = 95,
+        .baseSpeed     = 84,
+        .baseSpAttack  = 133,
+        .baseSpDefense = 91,
+        .types = MON_TYPES(TYPE_STEEL, TYPE_GHOST),
+        .catchRate = 45,
+        .expYield = 275,
+        .evYield_HP = 1,
+        .evYield_Attack = 2,
+        .genderRatio = MON_MALE,
+        .eggCycles = 120,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_PERISH_BODY, ABILITY_CURSED_BODY, ABILITY_GOOD_AS_GOLD },
+        .bodyColor = BODY_COLOR_BROWN,
+        .speciesName = _("Waltergeist"),
+        .cryId = CRY_GOURGEIST,
+        .natDexNum = NATIONAL_DEX_WALTERGEIST,
+        .categoryName = _("Breaking Bad"),
+        .height = 9,
+        .weight = 125,
+        .description = COMPOUND_STRING(
+            "In the darkness of a new-moon night,\n"
+            "Waltergeist will come knocking.\n"
+            "Whoever answers the door will be\n"
+            "swept off to the afterlife."),
+        .pokemonScale = 338,
+        .pokemonOffset = 8,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_Waltergeist,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 0,
+        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
+        .frontAnimId = ANIM_SHRINK_GROW,
+        .backPic = gMonBackPic_Waltergeist,
+        .backPicSize = MON_COORDS_SIZE(64, 64),
+        .backPicYOffset = 7,
+        .backAnimId = BACK_ANIM_NONE,
+        .palette = gMonPalette_Waltergeist,
+        .shinyPalette = gMonShinyPalette_Waltergeist,
+        .iconSprite = gMonIcon_Waltergeist,
+        .iconPalIndex = 0,
+        FOOTPRINT(Waltergeist)
+        OVERWORLD(
+            sPicTable_Waltergeist,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_Waltergeist,
+            gShinyOverworldPalette_Waltergeist
+        )
+        .levelUpLearnset = sWaltergeistLevelUpLearnset,
+        //.teachableLearnset = sWaltergeistTeachableLearnset,
+        .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
+    },
 };
 
 const struct EggData gEggDatas[EGG_ID_COUNT] =

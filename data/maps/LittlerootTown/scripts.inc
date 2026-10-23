@@ -243,6 +243,11 @@ LittlerootTown_EventScript_SetRivalBirchPosForDexUpgradeFemale::
 
 LittlerootTown_EventScript_FatMan::
 	msgbox LittlerootTown_Text_CanUsePCToStoreItems, MSGBOX_NPC
+    special EnterCode
+    waitstate
+    special GetCodeFeedback
+    goto_if_eq VAR_RESULT, 0, Incorrect
+    goto_if_eq VAR_RESULT, 1, Correct
 	end
 
 LittlerootTown_EventScript_Boy::
@@ -1014,3 +1019,18 @@ LittlerootTown_Text_BirchSomethingToShowYouAtLab:
 	.string "I have something to show you.\n"
 	.string "Let's go to my LAB.$"
 
+Correct::
+    msgbox LittlerootTown_Text_Correct, MSGBOX_DEFAULT
+    releaseall
+    end
+    
+Incorrect::
+    msgbox LittlerootTown_Text_Incorrect, MSGBOX_DEFAULT
+    releaseall
+    end
+
+LittlerootTown_Text_Correct:
+    .string "Correct!$"
+
+LittlerootTown_Text_Incorrect:
+    .string "Incorrect!$"

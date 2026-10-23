@@ -1128,6 +1128,8 @@
 #define P_FAMILY_TERAPAGOS               TRUE
 #undef P_FAMILY_PECHARUNT
 #define P_FAMILY_PECHARUNT               TRUE
+#undef P_FAMILY_WALTERGEIST
+#define P_FAMILY_WALTERGEIST              TRUE
 
 // Vars
 #undef B_VAR_DIFFICULTY
